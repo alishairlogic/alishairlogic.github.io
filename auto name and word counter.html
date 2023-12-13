@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name and Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+        }
+
+        #counterContainer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" placeholder="Enter your first name">
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" placeholder="Enter your last name">
+
+    <div id="fullName"></div>
+
+    <div id="counterContainer">
+        <label for="textInput">Type Something:</label>
+        <textarea id="textInput" rows="4" placeholder="Start typing..."></textarea>
+        <p>Word Count: <span id="wordCount">0</span></p>
+        <p>Alphabet Count: <span id="alphabetCount">0</span></p>
+    </div>
+
+    <script>
+        function updateFullName() {
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var fullName = firstName + ' ' + lastName;
+            document.getElementById('fullName').innerHTML = '<p>Your Full Name: ' + fullName + '</p>';
+        }
+
+        function updateCounters() {
+            var textInput = document.getElementById('textInput').value;
+            var words = textInput.split(/\s+/).filter(function (word) {
+                return word.length > 0;
+            });
+            var wordCount = words.length;
+
+            var alphabetCount = textInput.replace(/\s+/g, '').length;
+
+            document.getElementById('wordCount').textContent = wordCount;
+            document.getElementById('alphabetCount').textContent = alphabetCount;
+        }
+
+        var nameInputs = document.querySelectorAll('#firstName, #lastName');
+        var textInput = document.getElementById('textInput');
+
+        nameInputs.forEach(function (input) {
+            input.addEventListener('input', function () {
+                updateFullName();
+                updateCounters();
+            });
+        });
+
+        textInput.addEventListener('input', updateCounters);
+    </script>
+</body>
+</html>

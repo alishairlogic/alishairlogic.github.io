@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resizable Links</title>
+  <style>
+    /* Styling for the links */
+    .resizable-link {
+      font-size: 16px;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* Styling for the increased size on click */
+    .resizable-link.clicked {
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Links container -->
+  <div id="links-container">
+    <!-- Each link has a unique ID and an 'onclick' attribute to trigger the JavaScript function -->
+    <a href="https://example.com" id="link1" class="resizable-link" onclick="handleClick(this)">Link 1</a>
+    <a href="https://example.com" id="link2" class="resizable-link" onclick="handleClick(this)">Link 2</a>
+    <a href="https://example.com" id="link3" class="resizable-link" onclick="handleClick(this)">Link 3</a>
+    <a href="https://example.com" id="link4" class="resizable-link" onclick="handleClick(this)">Link 4</a>
+    <a href="https://example.com" id="link5" class="resizable-link" onclick="handleClick(this)">Link 5</a>
+    <a href="https://example.com" id="link6" class="resizable-link" onclick="handleClick(this)">Link 6</a>
+    <a href="https://example.com" id="link7" class="resizable-link" onclick="handleClick(this)">Link 7</a>
+    <a href="https://example.com" id="link8" class="resizable-link" onclick="handleClick(this)">Link 8</a>
+    <a href="https://example.com" id="link9" class="resizable-link" onclick="handleClick(this)">Link 9</a>
+    <a href="https://example.com" id="link10" class="resizable-link" onclick="handleClick(this)">Link 10</a>
+  </div>
+
+  <script>
+    function handleClick(link) {
+      // Check if the link has the 'clicked' class
+      if (link.classList.contains("clicked")) {
+        // If clicked, open the link
+        window.open(link.href, "_blank");
+      } else {
+        // If not clicked, increase the font size and add the 'clicked' class
+        link.classList.add("clicked");
+      }
+    }
+  </script>
+</body>
+</html>
